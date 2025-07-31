@@ -1,0 +1,30 @@
+{
+  "name": "cm2040_template",
+  "version": "1.0.0",
+  "description": "A template for the mid-term assignment",
+  "license": "ISC",
+  "author": "Simon Katan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-db": "cat db_schema.sql | sqlite3 database.db #build anew database from the sql file",
+    "clean-db": "rm database.db #remove the old database",
+    "build-db-win": "sqlite3 database.db < db_schema.sql",
+    "clean-db-win": "del database.db",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "postcss": "^8.4.49",
+    "sqlite3": "^5.1.7",
+    "tailwindcss": "^3.4.17"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  }
+}

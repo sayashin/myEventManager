@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+    <link href="/tailwind.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto p-6 max-w-screen-md">
+        <div class="text-center mb-6">
+            <h1 class="text-lg font-bold text-gray-800">Edit Event</h1>
+        </div>
+
+        <!--//editing setup-->
+        <div class="bg-white rounded shadow p-6 border border-gray-300">
+            <form action="/organiser/edit/<%= event.id %>" method="POST" class="space-y-4">
+                <!--//adding title-->
+                <div>
+                    <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
+                    <input type="text" id="title" name="title" value="<%= event.title %>" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                </div>
+
+                <!--//adding description-->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
+                    <textarea id="description" name="description" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"><%= event.description %></textarea>
+                </div>
+
+                <!--//adding date-->
+                <div>
+                    <label for="date" class="block text-sm font-medium text-gray-700">Date:</label>
+                    <input type="date" id="date" name="date" value="<%= event.date %>" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                </div>
+
+                <!--//adding tickets quatities-->
+                <div class="flex justify-between gap-4">
+                    <!--//total full price tickets-->
+                    <div class="flex-1">
+                        <label for="fullPriceTickets" class="block text-sm font-medium text-gray-700">Full-Price
+                            Tickets:</label>
+                        <input type="number" id="fullPriceTickets" name="fullPriceTickets"
+                            value="<%= event.fullPriceTickets %>" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                    </div>
+                    <!--//cost of tickets-->
+                    <div class="flex-1">
+                        <label for="fullPriceCost" class="block text-sm font-medium text-gray-700">Full-Price
+                            Cost:</label>
+                        <input type="number" id="fullPriceCost" name="fullPriceCost" value="<%= event.fullPriceCost %>"
+                            step="0.01" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="flex justify-between gap-4">
+                    <!--//total concessions tickets-->
+                    <div class="flex-1">
+                        <label for="concessionTickets" class="block text-sm font-medium text-gray-700">Concession
+                            Tickets:</label>
+                        <input type="number" id="concessionTickets" name="concessionTickets"
+                            value="<%= event.concessionTickets %>" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                    </div>
+                    <!--//cost of tickets-->
+                    <div class="flex-1">
+                        <label for="concessionCost" class="block text-sm font-medium text-gray-700">Concession
+                            Cost:</label>
+                        <input type="number" id="concessionCost" name="concessionCost"
+                            value="<%= event.concessionCost %>" step="0.01" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                    </div>
+                </div>
+
+                <!--//boton to save changes-->
+                <div class="text-center">
+                    <button type="submit"
+                        class="px-6 py-2 bg-blue-700 text-white rounded shadow hover:bg-blue-800 focus:ring focus:ring-blue-300 focus:outline-none">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!--//link to bacck to home-->
+        <div class="mt-6 text-center">
+            <a href="/organiser"
+                class="px-4 py-2 text-blue-700 border-2 border-blue-700 rounded shadow hover:bg-blue-50 focus:ring focus:ring-blue-300 focus:outline-none text-sm">
+                Back to Organiser Home
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

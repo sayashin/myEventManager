@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+    <link href="/tailwind.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto p-6 max-w-screen-md">
+        <div class="text-center mb-6">
+            <h1 class="text-left text-sm font-semibold text-gray-600">Attendee Event Page</h1>
+            <h2 class="text-2xl text-gray-800 mt-2">
+                <%= event.title %>
+            </h2>
+        </div>
+
+        <!--//selected event info-->
+        <div class="bg-white rounded shadow p-6 mb-6 border border-gray-300">
+            <p class="text-sm text-gray-600 mb-4">
+                <%= event.description %>
+            </p>
+            <div class="flex justify-between items-center mb-4">
+                <p class="text-sm text-gray-700">Date:</p>
+                <p class="text-sm text-black">
+                    <%= event.date || "Not set" %>
+                </p>
+            </div>
+            <div class="flex justify-between items-center">
+                <div class="flex-1 pr-4">
+                    <p class="text-sm text-gray-700">Full-Price Tickets:</p>
+                    <p class="text-sm text-black">£<%= event.full_price_cost %> (Available: <%=
+                                event.remaining_full_price_tickets || event.full_price_tickets %>)</p>
+                </div>
+                <div class="flex-1 pl-4 border-l border-gray-300">
+                    <p class="text-sm text-gray-700">Concession Tickets:</p>
+                    <p class="text-sm text-black">£<%= event.concession_cost %> (Available: <%=
+                                event.remaining_concession_tickets || event.concession_tickets %>)</p>
+                </div>
+            </div>
+        </div>
+
+        <!--//adding tickets-->
+        <div class="bg-white rounded shadow p-6 border border-gray-300">
+            <form action="/attendee/event/<%= event.id %>/book" method="POST" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Your Name:</label>
+                    <input type="text" id="name" name="name" required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                </div>
+
+                <div class="flex justify-between gap-4">
+                    <div class="flex-1">
+                        <label for="fullPrice" class="block text-sm font-medium text-gray-700">Full-Price
+                            Tickets:</label>
+                        <input type="number" id="fullPrice" name="fullPrice" min="0"
+                            max="<%= event.full_price_tickets %>" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                    </div>
+
+                    <div class="flex-1">
+                        <label for="concession" class="block text-sm font-medium text-gray-700">Concession
+                            Tickets:</label>
+                        <input type="number" id="concession" name="concession" min="0"
+                            max="<%= event.concession_tickets %>" required
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit"
+                        class="px-6 py-2 bg-blue-700 text-white rounded shadow hover:bg-blue-800 focus:ring focus:ring-blue-300 focus:outline-none">
+                        Book
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!--//back to attendee-->
+        <div class="mt-6 text-center">
+            <a href="/attendee"
+                class="px-4 py-2 text-blue-700 border-2 border-blue-700 rounded shadow hover:bg-blue-50 focus:ring focus:ring-blue-300 focus:outline-none text-sm">
+                Back to Events
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
