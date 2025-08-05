@@ -1,3 +1,5 @@
+here i upload all the node modules. but in case you start from scatch you need to do this first:
+
 first we need to run this commands:
 -npm init
 -npm install express --save
